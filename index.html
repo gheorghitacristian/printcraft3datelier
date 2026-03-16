@@ -12,11 +12,13 @@
         .infill-pattern { 
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath fill='%231e293b' fill-opacity='0.4' d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9z'/%3E%3C/svg%3E"); 
         }
-        /* Trick pentru a face logoul negru-pe-alb să arate bine pe fundal negru */
-        .logo-filter { 
-            filter: invert(1) brightness(1.5); 
+        /* Ajustăm logoul de pe GitHub (invertim culorile pentru fundalul închis) */
+        .logo-img { 
+            filter: invert(1) brightness(1.8); 
             mix-blend-mode: lighten;
+            object-fit: contain;
         }
+        .glow-orange:hover { border-color: #f97316; box-shadow: 0 0 20px rgba(249, 115, 22, 0.2); }
     </style>
 </head>
 <body>
@@ -26,8 +28,8 @@
     <nav class="fixed top-0 w-full z-50 bg-[#0f172a]/95 backdrop-blur-md border-b border-slate-700">
         <div class="max-w-7xl mx-auto flex justify-between items-center p-3">
             <a href="#acasa" class="flex items-center gap-3">
-                <!-- LOGO-UL TĂU NOU -->
-                <img src="logo.jpg" alt="PrintCraft 3D Logo" class="h-12 w-auto logo-filter">
+                <!-- LINK-UL RAW DIN GITHUB-UL TĂU -->
+                <img src="https://raw.githubusercontent.com/gheorghitacristian/printcraft3datelier/main/466733987_462756443593193_1249311460057224909_n.jpg" alt="PrintCraft 3D Logo" class="h-14 w-auto logo-img">
                 <span class="text-xl font-bold uppercase italic tracking-tighter hidden sm:block">
                     PrintCraft <span class="text-orange-500">3D Atelier</span>
                 </span>
@@ -48,13 +50,14 @@
         <div class="bg-orange-600/20 text-orange-400 px-4 py-1 rounded-full text-xs font-bold mb-6 border border-orange-600/30 uppercase tracking-widest">
             Garanție 0% Spaghete 🍝
         </div>
-        <!-- LOGO MARE ÎN PAGINĂ -->
-        <img src="logo.jpg" alt="PrintCraft 3D Atelier" class="h-32 w-auto mb-8 logo-filter">
         
-        <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase italic leading-tight">
-            De la Pixeli <br> <span class="text-orange-500 underline decoration-white font-serif">la Obiecte.</span>
+        <!-- LOGO MARE ÎN PAGINĂ -->
+        <img src="https://raw.githubusercontent.com/gheorghitacristian/printcraft3datelier/main/466733987_462756443593193_1249311460057224909_n.jpg" alt="Logo Atelier" class="h-32 w-auto mb-8 logo-img">
+
+        <h1 class="text-5xl md:text-8xl font-black mb-6 uppercase italic leading-tight">
+            De la Pixeli <br> <span class="text-orange-500 underline decoration-white">la Obiecte.</span>
         </h1>
-        <p class="text-xl text-slate-400 max-w-xl mb-10">Transformăm fișierele tale digitale în obiecte palpabile cu precizie micrometrică.</p>
+        <p class="text-xl text-slate-400 max-w-xl mb-10">Transformăm fișierele tale digitale în obiecte palpabile la PrintCraft 3D Atelier.</p>
         <div class="flex flex-wrap justify-center gap-4">
             <a href="#catalog" class="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-orange-500 hover:text-white transition">Vezi Catalog</a>
             <a href="#comanda" class="bg-slate-800 border border-slate-700 text-white px-8 py-4 rounded-xl font-bold hover:border-orange-500 transition">Comandă Custom</a>
@@ -63,24 +66,24 @@
 
     <!-- CATALOG -->
     <section id="catalog" class="py-32 px-6 max-w-7xl mx-auto scroll-mt-24">
-        <h2 class="text-4xl font-black italic uppercase mb-12 border-l-4 border-orange-500 pl-4">Catalog Hot Prints</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 hover:border-orange-500 transition text-center">
+        <h2 class="text-4xl font-black italic uppercase mb-12 border-l-4 border-orange-500 pl-4 text-white">Catalog Hot Prints</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 glow-orange transition">
                 <div class="text-6xl mb-6">🐉</div>
                 <h3 class="text-2xl font-bold mb-2">Dragon Articulat</h3>
-                <p class="text-slate-400 mb-6 italic text-sm">Flexibil și spectaculos, printat dintr-o singură bucată.</p>
+                <p class="text-slate-400 mb-6 italic text-sm">Flexibil și spectaculos, printat dintr-o singură bucată fără asamblare.</p>
                 <div class="text-orange-500 font-bold text-2xl">55 RON</div>
             </div>
-            <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 hover:border-orange-500 transition text-center">
+            <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 glow-orange transition">
                 <div class="text-6xl mb-6">🏰</div>
                 <h3 class="text-2xl font-bold mb-2">Castel Dice Tower</h3>
-                <p class="text-slate-400 mb-6 italic text-sm">Accesoriul suprem pentru pasionații de boardgames.</p>
+                <p class="text-slate-400 mb-6 italic text-sm">Accesoriul suprem pentru boardgames și colecționari D&D.</p>
                 <div class="text-orange-500 font-bold text-2xl">120 RON</div>
             </div>
-            <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 hover:border-orange-500 transition text-center">
+            <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 glow-orange transition">
                 <div class="text-6xl mb-6">⚙️</div>
                 <h3 class="text-2xl font-bold mb-2">Piese Tehnice</h3>
-                <p class="text-slate-400 mb-6 italic text-sm">Piese de schimb rezistente din PETG sau ABS.</p>
+                <p class="text-slate-400 mb-6 italic text-sm">Prototipuri și piese de schimb rezistente din PETG sau ABS.</p>
                 <div class="text-orange-500 font-bold text-2xl">de la 30 RON</div>
             </div>
         </div>
@@ -89,11 +92,11 @@
     <!-- MATERIALE -->
     <section id="materiale" class="py-32 bg-slate-900/50 scroll-mt-24 border-y border-slate-800">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black italic uppercase mb-12">Materiale</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-bold">
-                <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 text-orange-500 uppercase tracking-tighter">PLA</div>
-                <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 text-orange-500 uppercase tracking-tighter">PETG</div>
-                <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 text-orange-500 uppercase tracking-tighter">Rășină</div>
+            <h2 class="text-4xl font-black italic uppercase mb-12 italic text-white">Materiale Atelier</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-bold uppercase tracking-widest text-orange-500">
+                <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700">PLA</div>
+                <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700">PETG</div>
+                <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700">Rășină</div>
             </div>
         </div>
     </section>
@@ -102,18 +105,19 @@
     <section id="comanda" class="py-32 px-6 max-w-3xl mx-auto scroll-mt-24">
         <div class="bg-orange-600 p-1 rounded-3xl shadow-2xl">
             <div class="bg-slate-800 rounded-[calc(1.5rem-1px)] p-8 md:p-12">
-                <h2 class="text-4xl font-black italic uppercase mb-2 text-center">Ești gata?</h2>
-                <p class="text-center text-slate-400 mb-10 italic">Trimite detaliile proiectului tău:</p>
+                <h2 class="text-4xl font-black italic uppercase mb-2 text-center text-white">Ești gata?</h2>
+                <p class="text-center text-slate-400 mb-10">Trimite detaliile și te contactăm pentru ofertă în maxim 24h.</p>
                 
-                <form action="https://formspree.io/f/xlgppwle" method="POST" class="space-y-4">
-                    <input type="text" name="nume" placeholder="Numele tău" required class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl outline-none focus:border-orange-500 transition">
-                    <input type="text" name="telefon" placeholder="Nr. Telefon / WhatsApp" required class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl outline-none focus:border-orange-500 transition">
-                    <input type="url" name="link_stl" placeholder="Link fișier (Dropbox, Drive, WeTransfer)" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl outline-none focus:border-orange-500 transition">
-                    <textarea name="mesaj" rows="3" placeholder="Detalii (culoare, mărime...)" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl outline-none focus:border-orange-500 transition"></textarea>
-                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-500 py-4 rounded-xl font-black text-xl transition-all shadow-lg uppercase italic">Trimite Cererea 🚀</button>
+                <form action="https://formspree.io/f/xlgppwle" method="POST" class="space-y-4 text-left">
+                    <input type="text" name="nume" placeholder="Numele tău" required class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-orange-500 transition">
+                    <input type="text" name="telefon" placeholder="Nr. Telefon / WhatsApp" required class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-orange-500 transition">
+                    <input type="url" name="link_stl" placeholder="Link fișier (Dropbox, Drive, WeTransfer)" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-orange-500 transition">
+                    <textarea name="mesaj" rows="3" placeholder="Detalii proiect (culoare, mărime, material...)" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-orange-500 transition"></textarea>
+                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-500 text-white py-4 rounded-xl font-black text-xl transition-all shadow-lg active:scale-95 uppercase italic">Trimite Cererea 🚀</button>
                 </form>
 
                 <div class="mt-8 text-center border-t border-slate-700 pt-8">
+                    <p class="text-slate-500 text-sm mb-4 italic">Vrei un răspuns instant?</p>
                     <a href="https://wa.me/40747447679?text=Salut%20PrintCraft%203D!%20Vreau%20o%20ofertă." target="_blank" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-full font-bold transition shadow-lg">
                         WHATSAPP DIRECT 💬
                     </a>
@@ -125,18 +129,17 @@
     <!-- PORTOFOLIU -->
     <section class="py-20 bg-slate-900/80 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-2xl font-black italic uppercase mb-8">Portofoliu</h2>
-            <div class="flex justify-center gap-10">
-                <a href="https://www.instagram.com/printcraft3datelier/" target="_blank" class="hover:text-orange-500 font-bold transition uppercase italic">Instagram</a>
-                <a href="https://www.facebook.com/profile.php?id=61554280020091" target="_blank" class="hover:text-orange-500 font-bold transition uppercase italic">Facebook</a>
+            <h2 class="text-2xl font-black italic uppercase mb-10 tracking-wider">Portofoliu Proiecte</h2>
+            <div class="flex justify-center gap-12 font-bold uppercase italic">
+                <a href="https://www.instagram.com/printcraft3datelier/" target="_blank" class="text-slate-400 hover:text-orange-500 transition">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=61554280020091" target="_blank" class="text-slate-400 hover:text-orange-500 transition">Facebook</a>
             </div>
         </div>
     </section>
 
     <footer class="py-10 text-center text-slate-600 bg-slate-950">
-        <img src="logo.jpg" alt="Logo" class="h-10 w-auto mx-auto mb-4 logo-filter opacity-50">
-        <p class="text-sm uppercase font-bold">PrintCraft 3D Atelier</p>
-    </section>
+        <p class="text-sm uppercase font-bold tracking-widest">PrintCraft 3D Atelier România</p>
+    </footer>
 
 </body>
 </html>
