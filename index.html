@@ -3,258 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrintCraft 3D Atelier | Profesional 3D Printing</title>
+    <title>PrintCraft 3D Atelier | Proiecte la comandă</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Space+Grotesk', sans-serif; background-color: #020617; color: #f8fafc; }
+        body { font-family: 'Space+Grotesk', sans-serif; background-color: #050505; color: #f8fafc; }
         
-        .infill-pattern { 
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath fill='%231e293b' fill-opacity='0.3' d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9z'/%3E%3C/svg%3E"); 
+        /* Fundal nou: Blueprint Grid Industrial */
+        .blueprint-bg { 
+            background-image: 
+                linear-gradient(rgba(249, 115, 22, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(249, 115, 22, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .hero-glow {
+            background: radial-gradient(circle at 20% 30%, rgba(234, 88, 12, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(234, 88, 12, 0.1) 0%, transparent 50%);
         }
 
         .glass {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.15) 0%, rgba(2, 6, 23, 0) 70%);
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .logo-img { 
             filter: invert(1) brightness(1.8); 
             mix-blend-mode: lighten;
+            transition: transform 0.3s ease;
         }
+        .logo-img:hover { transform: scale(1.05); }
 
         .btn-primary {
             background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            transition: all 0.3s ease;
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -10px rgba(249, 115, 22, 0.5);
+        
+        .step-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .step-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(249, 115, 22, 0.5);
+            background: rgba(249, 115, 22, 0.05);
         }
     </style>
 </head>
 <body class="antialiased">
-    <div class="fixed inset-0 infill-pattern -z-10"></div>
-    <div class="fixed inset-0 hero-gradient -z-5"></div>
+    <div class="fixed inset-0 blueprint-bg -z-10"></div>
+    <div class="fixed inset-0 hero-glow -z-5"></div>
 
-    <!-- NAVIGAȚIE -->
-    <nav class="fixed top-4 left-0 right-0 z-50 px-4">
-        <div class="max-w-6xl mx-auto glass rounded-2xl p-3 flex justify-between items-center px-6 border-white/5">
-            <a href="#acasa" class="flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/gheorghitacristian/printcraft3datelier/main/466733987_462756443593193_1249311460057224909_n.jpg" alt="Logo" class="h-10 w-auto logo-img">
-                <span class="text-lg font-bold tracking-tight uppercase italic hidden md:block">PrintCraft <span class="text-orange-500">3D</span></span>
-            </a>
-            <div class="flex items-center gap-8">
-                <div class="hidden md:flex gap-6 text-sm font-medium text-slate-300">
-                    <a href="#catalog" class="hover:text-orange-500 transition">Catalog</a>
-                    <a href="#proces" class="hover:text-orange-500 transition">Cum funcționează</a>
-                    <a href="#materiale" class="hover:text-orange-500 transition">Materiale</a>
+    <!-- NAVIGAȚIE ACTUALIZATĂ CU LOGO MAI MARE -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+        <div class="max-w-7xl mx-auto glass rounded-3xl p-4 flex justify-between items-center px-8 border-white/5 shadow-2xl">
+            <a href="#acasa" class="flex items-center gap-4">
+                <!-- Logo mărit la h-20 -->
+                <img src="https://raw.githubusercontent.com/gheorghitacristian/printcraft3datelier/main/466733987_462756443593193_1249311460057224909_n.jpg" 
+                     alt="PrintCraft Logo" 
+                     class="h-16 md:h-20 w-auto logo-img">
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold tracking-tighter uppercase italic leading-none">PrintCraft</span>
+                    <span class="text-orange-500 font-medium text-sm tracking-[0.2em] uppercase">3D Atelier</span>
                 </div>
-                <a href="#comanda" class="btn-primary text-white px-5 py-2 rounded-xl font-bold text-sm">Cere Ofertă</a>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest">
+                <a href="#catalog" class="hover:text-orange-500 transition">Catalog</a>
+                <a href="#proces" class="hover:text-orange-500 transition">Cum funcționăm</a>
+                <a href="#comanda" class="btn-primary text-white px-6 py-3 rounded-2xl shadow-lg shadow-orange-900/20 active:scale-95 transition-all">Porniți Printul</a>
             </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section id="acasa" class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
-        <div class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 text-orange-400 px-4 py-1.5 rounded-full text-xs font-bold mb-8 uppercase tracking-[0.2em]">
-            <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-            </span>
-            Precision Manufacturing
+    <section id="acasa" class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32">
+        <div class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 text-orange-400 px-4 py-2 rounded-full text-xs font-bold mb-8 uppercase tracking-[0.3em]">
+            Digital to Physical
         </div>
-        <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tighter leading-[0.9]">
-            Proiectul tău devine <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Obiect Real.</span>
+        <h1 class="text-6xl md:text-9xl font-bold mb-6 tracking-tighter leading-[0.85] text-white">
+            Fabricăm <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-600 to-red-600">Ideile Tale.</span>
         </h1>
-        <p class="text-slate-400 max-w-2xl text-lg md:text-xl mb-10 leading-relaxed">
-            Atelier specializat în printare 3D de înaltă precizie. De la prototipuri industriale la piese de artă personalizate.
+        <p class="text-slate-400 max-w-2xl text-lg md:text-2xl mb-12 leading-relaxed font-light italic">
+            Descrie proiectul sau încarcă fișierul. Noi ne ocupăm de restul, de la verificare la livrare.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#comanda" class="btn-primary px-10 py-4 rounded-2xl font-bold text-lg">Începe un proiect</a>
-            <a href="#catalog" class="glass px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white/10 transition">Vezi portofoliu</a>
+        <div class="flex flex-col sm:flex-row gap-6">
+            <a href="#comanda" class="btn-primary px-12 py-5 rounded-2xl font-bold text-xl shadow-2xl hover:scale-105 transition-transform">Lansează Comanda</a>
+            <a href="#catalog" class="glass px-12 py-5 rounded-2xl font-bold text-xl hover:bg-white/10 transition">Catalog Produse</a>
         </div>
     </section>
 
-    <!-- PROCES (HOW IT WORKS) - Nou! -->
-    <section id="proces" class="py-32 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-3">Workflow</h2>
-            <h3 class="text-4xl font-bold uppercase italic">Procesul de Fabricație</h3>
+    <!-- PROCESUL DE FABRICAȚIE (REFAZUT) -->
+    <section id="proces" class="py-32 px-6 max-w-7xl mx-auto scroll-mt-24">
+        <div class="text-center mb-20">
+            <h2 class="text-orange-500 font-bold uppercase tracking-[0.4em] mb-4 text-sm">Workflow Profesional</h2>
+            <h3 class="text-5xl font-bold uppercase italic">Călătoria Obiectului Tău</h3>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="relative text-center">
-                <div class="w-16 h-16 glass rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 text-orange-500 border-orange-500/30">1</div>
-                <h4 class="text-xl font-bold mb-3">Upload STL</h4>
-                <p class="text-slate-400">Încarci fișierul digital și alegi materialul potrivit proiectului tău.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+            <!-- Pas 1 -->
+            <div class="step-card glass p-8 rounded-[2rem] relative overflow-hidden">
+                <span class="absolute -right-4 -top-4 text-8xl font-black opacity-5">1</span>
+                <div class="text-orange-500 text-3xl mb-6 font-bold uppercase">01</div>
+                <h4 class="text-xl font-bold mb-4">Proiectul</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Încarci fișierul .STL sau descrii în cuvinte obiectul pe care ți-l dorești.</p>
             </div>
-            <div class="relative text-center md:before:content-[''] md:before:absolute md:before:w-full md:before:h-[1px] md:before:bg-slate-800 md:before:top-8 md:before:-left-1/2 md:after:content-[''] md:after:absolute md:after:w-full md:after:h-[1px] md:after:bg-slate-800 md:after:top-8 md:after:-right-1/2">
-                <div class="w-16 h-16 glass rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 text-orange-500 border-orange-500/30 relative z-10">2</div>
-                <h4 class="text-xl font-bold mb-3">Optimizare & Print</h4>
-                <p class="text-slate-400">Verificăm fișierul, optimizăm suporturile și pornim producția 3D.</p>
+
+            <!-- Pas 2 -->
+            <div class="step-card glass p-8 rounded-[2rem] relative overflow-hidden border-orange-500/20">
+                <span class="absolute -right-4 -top-4 text-8xl font-black opacity-5">2</span>
+                <div class="text-orange-500 text-3xl mb-6 font-bold uppercase">02</div>
+                <h4 class="text-xl font-bold mb-4">Verificarea</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Echipa noastră analizează cererea pentru a asigura viabilitatea printului.</p>
             </div>
-            <div class="relative text-center">
-                <div class="w-16 h-16 glass rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 text-orange-500 border-orange-500/30">3</div>
-                <h4 class="text-xl font-bold mb-3">Livrare Rapidă</h4>
-                <p class="text-slate-400">Piesa finisată este ambalată cu grijă și trimisă direct la ușa ta.</p>
+
+            <!-- Pas 3 -->
+            <div class="step-card glass p-8 rounded-[2rem] relative overflow-hidden">
+                <span class="absolute -right-4 -top-4 text-8xl font-black opacity-5">3</span>
+                <div class="text-orange-500 text-3xl mb-6 font-bold uppercase">03</div>
+                <h4 class="text-xl font-bold mb-4">Confirmarea</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Primești un mesaj de confirmare cu oferta finală înainte de a porni mașinile.</p>
+            </div>
+
+            <!-- Pas 4 -->
+            <div class="step-card glass p-8 rounded-[2rem] relative overflow-hidden border-orange-500/20">
+                <span class="absolute -right-4 -top-4 text-8xl font-black opacity-5">4</span>
+                <div class="text-orange-500 text-3xl mb-6 font-bold uppercase">04</div>
+                <h4 class="text-xl font-bold mb-4">Printarea</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Obiectul prinde formă strat cu strat, folosind tehnologia de precizie aleasă.</p>
+            </div>
+
+            <!-- Pas 5 -->
+            <div class="step-card glass p-8 rounded-[2rem] relative overflow-hidden">
+                <span class="absolute -right-4 -top-4 text-8xl font-black opacity-5">5</span>
+                <div class="text-orange-500 text-3xl mb-6 font-bold uppercase">05</div>
+                <h4 class="text-xl font-bold mb-4">Livrarea</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Produsul finisat este ambalat și expediat către adresa ta.</p>
             </div>
         </div>
     </section>
 
     <!-- CATALOG -->
     <section id="catalog" class="py-32 px-6 max-w-7xl mx-auto scroll-mt-24">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-            <div>
-                <h2 class="text-sm font-bold text-orange-500 uppercase tracking-widest mb-3">Shop</h2>
-                <h3 class="text-5xl font-bold uppercase italic tracking-tighter text-white">Catalog Modele</h3>
-            </div>
-            <a href="https://www.instagram.com/printcraft3datelier/" class="text-slate-400 hover:text-orange-500 font-bold transition">Vezi tot portofoliul →</a>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="group relative bg-slate-900/40 rounded-[2.5rem] p-4 border border-white/5 hover:border-orange-500/50 transition-all duration-500">
-                <div class="bg-slate-950 rounded-[2rem] h-72 mb-6 flex items-center justify-center text-7xl group-hover:scale-105 transition-transform duration-500 overflow-hidden relative">
-                    🐉
-                    <div class="absolute inset-0 bg-gradient-to-t from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
-                <div class="px-4 pb-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-2xl font-bold">Dragon Crystal</h3>
-                        <span class="bg-orange-500/10 text-orange-500 text-[10px] font-bold px-2 py-1 rounded-md uppercase">Top Seller</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Articulat, printat din PLA Silk pentru un luciu metalic deosebit.</p>
-                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
-                        <span class="text-2xl font-bold text-white">55 RON</span>
-                        <a href="#comanda" class="bg-white text-black h-10 w-10 rounded-full flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition-colors">→</a>
-                    </div>
+        <h3 class="text-4xl font-bold uppercase italic mb-12 border-l-4 border-orange-500 pl-6">Catalog Hot Prints</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="group glass rounded-[2.5rem] p-6 hover:border-orange-500/50 transition-all duration-500">
+                <div class="bg-black rounded-[2rem] h-64 mb-6 flex items-center justify-center text-7xl group-hover:scale-105 transition-transform duration-500">🐉</div>
+                <h3 class="text-2xl font-bold mb-2">Dragon Articulat</h3>
+                <p class="text-slate-400 text-sm mb-6">Flexibil, printat dintr-o bucată. PLA Silk.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-bold text-orange-500">55 RON</span>
+                    <a href="#comanda" class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition-colors">→</a>
                 </div>
             </div>
-
-            <!-- Card 2 -->
-            <div class="group relative bg-slate-900/40 rounded-[2.5rem] p-4 border border-white/5 hover:border-orange-500/50 transition-all duration-500">
-                <div class="bg-slate-950 rounded-[2rem] h-72 mb-6 flex items-center justify-center text-7xl group-hover:scale-105 transition-transform duration-500 overflow-hidden relative">
-                    🏰
-                    <div class="absolute inset-0 bg-gradient-to-t from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
-                <div class="px-4 pb-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-2xl font-bold">Dice Tower</h3>
-                        <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-1 rounded-md uppercase">Gaming</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Turn de zaruri complex pentru boardgames, detaliu ultra-fin.</p>
-                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
-                        <span class="text-2xl font-bold text-white">120 RON</span>
-                        <a href="#comanda" class="bg-white text-black h-10 w-10 rounded-full flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition-colors">→</a>
-                    </div>
+            <div class="group glass rounded-[2.5rem] p-6 hover:border-orange-500/50 transition-all duration-500">
+                <div class="bg-black rounded-[2rem] h-64 mb-6 flex items-center justify-center text-7xl group-hover:scale-105 transition-transform duration-500">🏰</div>
+                <h3 class="text-2xl font-bold mb-2">Castel Dice Tower</h3>
+                <p class="text-slate-400 text-sm mb-6">Accesoriul suprem pentru gaming.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-bold text-orange-500">120 RON</span>
+                    <a href="#comanda" class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition-colors">→</a>
                 </div>
             </div>
-
-            <!-- Card 3 -->
-            <div class="group relative bg-slate-900/40 rounded-[2.5rem] p-4 border border-white/5 hover:border-orange-500/50 transition-all duration-500">
-                <div class="bg-slate-950 rounded-[2rem] h-72 mb-6 flex items-center justify-center text-7xl group-hover:scale-105 transition-transform duration-500 overflow-hidden relative">
-                    ⚙️
-                    <div class="absolute inset-0 bg-gradient-to-t from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
-                <div class="px-4 pb-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-2xl font-bold">Piese Tehnice</h3>
-                        <span class="bg-green-500/10 text-green-400 text-[10px] font-bold px-2 py-1 rounded-md uppercase">Industrial</span>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Printăm piese de schimb din PETG rezistent la UV și solicitări mecanice.</p>
-                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
-                        <span class="text-2xl font-bold text-white">de la 30 RON</span>
-                        <a href="#comanda" class="bg-white text-black h-10 w-10 rounded-full flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition-colors">→</a>
-                    </div>
+            <div class="group glass rounded-[2.5rem] p-6 hover:border-orange-500/50 transition-all duration-500">
+                <div class="bg-black rounded-[2rem] h-64 mb-6 flex items-center justify-center text-7xl group-hover:scale-105 transition-transform duration-500">⚙️</div>
+                <h3 class="text-2xl font-bold mb-2">Piese Tehnice</h3>
+                <p class="text-slate-400 text-sm mb-6">Rezistență industrială (PETG/ABS).</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-bold text-orange-500">de la 30 RON</span>
+                    <a href="#comanda" class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center font-bold hover:bg-orange-500 hover:text-white transition-colors">→</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MATERIALE -->
-    <section id="materiale" class="py-32 px-6 scroll-mt-24">
-        <div class="max-w-4xl mx-auto glass p-12 rounded-[3rem] border-white/5 relative overflow-hidden">
-            <div class="absolute top-0 right-0 p-10 opacity-5 text-9xl font-black">3D</div>
-            <h2 class="text-3xl font-bold mb-10 text-center uppercase tracking-tighter">Materiale Premium</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-                <div>
-                    <h4 class="text-orange-500 font-bold text-xl mb-2">PLA</h4>
-                    <p class="text-slate-400 text-sm italic">Estetic & Eco</p>
-                </div>
-                <div class="border-y sm:border-y-0 sm:border-x border-white/10 py-6 sm:py-0">
-                    <h4 class="text-orange-500 font-bold text-xl mb-2">PETG</h4>
-                    <p class="text-slate-400 text-sm italic">Rezistență Tehnică</p>
-                </div>
-                <div>
-                    <h4 class="text-orange-500 font-bold text-xl mb-2">Rășină</h4>
-                    <p class="text-slate-400 text-sm italic">Detalii Micro</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COMANDA -->
-    <section id="comanda" class="py-32 px-6 max-w-3xl mx-auto scroll-mt-24">
-        <div class="text-center mb-12">
-            <h3 class="text-4xl font-bold uppercase italic mb-4">Lansează o comandă</h3>
-            <p class="text-slate-400 italic">Completează formularul de mai jos pentru o cotație rapidă.</p>
-        </div>
-        
-        <div class="glass p-8 md:p-12 rounded-[2.5rem] border-white/5 shadow-2xl">
+    <!-- COMANDA FORM -->
+    <section id="comanda" class="py-32 px-6 max-w-4xl mx-auto scroll-mt-24">
+        <div class="glass p-8 md:p-16 rounded-[3rem] border-orange-500/10 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-12 opacity-5 text-8xl font-black">ORDER</div>
+            <h3 class="text-4xl font-bold uppercase italic mb-2">Lansează un proiect</h3>
+            <p class="text-slate-400 mb-12 font-light">Completează datele și te contactăm pentru confirmare.</p>
+            
             <form action="https://formspree.io/f/xlgppwle" method="POST" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Nume Complet</label>
-                        <input type="text" name="nume" placeholder="Ex: Andrei Ionescu" required class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-orange-500 transition">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Contact WhatsApp</label>
-                        <input type="text" name="telefon" placeholder="07xx xxx xxx" required class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-orange-500 transition">
-                    </div>
+                    <input type="text" name="nume" placeholder="Numele tău" required class="bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition w-full">
+                    <input type="text" name="telefon" placeholder="Telefon / WhatsApp" required class="bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition w-full">
                 </div>
-                <div class="space-y-2">
-                    <label class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Link Model 3D (.STL)</label>
-                    <input type="url" name="link_stl" placeholder="Google Drive, WeTransfer, etc." class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-orange-500 transition">
-                </div>
-                <div class="space-y-2">
-                    <label class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Instrucțiuni Speciale</label>
-                    <textarea name="mesaj" rows="4" placeholder="Culoare, dimensiuni, material dorit..." class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-orange-500 transition"></textarea>
-                </div>
-                <button type="submit" class="w-full btn-primary py-5 rounded-2xl font-bold text-xl uppercase tracking-tighter italic">Trimite Cererea spre Atelier 🚀</button>
+                <input type="url" name="link_stl" placeholder="Link fișier (Google Drive, WeTransfer, etc)" class="bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition w-full">
+                <textarea name="mesaj" rows="4" placeholder="Descrie obiectul sau specifică materialul/culoarea..." class="bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition w-full"></textarea>
+                <button type="submit" class="w-full btn-primary py-6 rounded-2xl font-bold text-2xl uppercase tracking-tighter italic shadow-xl shadow-orange-900/30 active:scale-95 transition-all">Trimite spre Verificare 🚀</button>
             </form>
 
             <div class="mt-12 pt-8 border-t border-white/5 text-center">
-                <p class="text-slate-500 text-sm mb-6 italic italic">Preferi o discuție rapidă?</p>
-                <a href="https://wa.me/40747447679?text=Salut%20PrintCraft%203D!%20Vreau%20o%20ofertă." target="_blank" class="inline-flex items-center gap-3 glass hover:bg-green-500/10 border-green-500/20 text-green-400 px-8 py-4 rounded-full font-bold transition-all">
-                    <span>Chat pe WhatsApp</span>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.438-9.889 9.886-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.982z"/></svg>
+                <a href="https://wa.me/40747447679?text=Salut%20PrintCraft%203D!%20Vreau%20o%20ofertă%20de%20print." target="_blank" class="inline-flex items-center gap-4 bg-green-600/10 hover:bg-green-600/20 text-green-400 px-10 py-4 rounded-full font-bold transition-all border border-green-500/20">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.438-9.889 9.886-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.982z"/></svg>
+                    Chat pe WhatsApp
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- PORTOFOLIU SOCIAL -->
+    <!-- PORTOFOLIU JOS -->
     <section class="py-20 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-xs font-bold text-slate-500 uppercase tracking-[0.3em] mb-8">Social Portofoliu</h2>
+            <h4 class="text-xs font-bold text-slate-500 uppercase tracking-[0.4em] mb-10 text-white">Portofoliu Proiecte</h4>
             <div class="flex justify-center gap-12">
-                <a href="https://www.instagram.com/printcraft3datelier/" target="_blank" class="text-slate-400 hover:text-white transition font-bold uppercase italic tracking-widest text-sm">Instagram</a>
-                <a href="https://www.facebook.com/profile.php?id=61554280020091" target="_blank" class="text-slate-400 hover:text-white transition font-bold uppercase italic tracking-widest text-sm">Facebook</a>
+                <a href="https://www.instagram.com/printcraft3datelier/" target="_blank" class="text-slate-400 hover:text-orange-500 font-bold uppercase italic tracking-widest transition">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=61554280020091" target="_blank" class="text-slate-400 hover:text-orange-500 font-bold uppercase italic tracking-widest transition">Facebook</a>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 bg-black/40 text-center">
+    <footer class="py-12 bg-black/80 text-center border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-            <img src="https://raw.githubusercontent.com/gheorghitacristian/printcraft3datelier/main/466733987_462756443593193_1249311460057224909_n.jpg" alt="Logo" class="h-8 w-auto logo-img opacity-30 mb-4">
-            <p class="text-slate-500 text-xs tracking-[0.2em] uppercase font-medium">© 2026 PrintCraft 3D Atelier România</p>
+            <img src="https://raw.githubusercontent.com/gheorghitacristian/printcraft3datelier/main/466733987_462756443593193_1249311460057224909_n.jpg" alt="Logo" class="h-10 w-auto logo-img opacity-20 mb-4">
+            <p class="text-slate-600 text-[10px] tracking-[0.3em] uppercase">© 2026 PrintCraft 3D Atelier România</p>
         </div>
     </footer>
 
